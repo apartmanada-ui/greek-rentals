@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Grčki Raj | Studio Olymp i Studio Areti</title>
+    <title>Smeštaj Grčki Raj | apartmani Perea-Epivates | studija Olympic Beach</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
@@ -27,11 +27,60 @@
         .nav-links a:hover { color: var(--greek-blue); }
         .mobile-menu-btn { display: none; background: none; border: none; font-size: 1.5rem; cursor: pointer; color: var(--deep-blue); }
         
-        .hero { position: relative; height: 100vh; min-height: 600px; background-image: url('https://images.pexels.com/photos/258117/pexels-photo-258117.jpeg?auto=compress&cs=tinysrgb&w=1600'); background-size: cover; background-position: center; display: flex; align-items: center; justify-content: center; text-align: center; color: var(--white); }
-        .hero-overlay { position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(135deg, rgba(0,0,0,0.4), rgba(0,0,0,0.2)); }
-        .hero-content { position: relative; z-index: 2; max-width: 800px; padding: 0 24px; }
-        .hero-title { font-size: 3.5rem; margin-bottom: 16px; }
-        .hero-subtitle { font-size: 1.2rem; margin-bottom: 32px; }
+        .hero {
+            position: relative;
+            height: 100vh;
+            min-height: 700px;
+            background-image: url('https://i.ibb.co/TxHxsMD7/view-of-peraia-beach.jpg');
+            background-size: cover;
+            background-position: center 30%;
+            background-repeat: no-repeat;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--white);
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.2) 100%);
+            z-index: 1;
+        }
+        
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(0,0,0,0.4), rgba(0,0,0,0.2));
+            z-index: 1;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 3;
+            max-width: 800px;
+            padding: 0 24px;
+        }
+        
+        .hero-title {
+            font-size: 3.5rem;
+            margin-bottom: 16px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .hero-subtitle {
+            font-size: 1.2rem;
+            margin-bottom: 32px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+        }
         
         .btn-primary { display: inline-flex; align-items: center; gap: 8px; background: var(--greek-blue); color: var(--white); padding: 14px 32px; border-radius: 50px; text-decoration: none; font-weight: 500; transition: var(--transition); border: none; cursor: pointer; }
         .btn-primary:hover { background: var(--deep-blue); transform: translateY(-2px); }
@@ -77,21 +126,108 @@
         .lightbox-close { position: absolute; top: 20px; right: 30px; color: white; font-size: 2rem; cursor: pointer; }
         .lightbox-caption { position: absolute; bottom: 20px; left: 0; right: 0; text-align: center; color: white; background: rgba(0,0,0,0.6); padding: 8px; }
         
+        /* Modal for Cancellation Policy */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.8);
+            z-index: 3000;
+            justify-content: center;
+            align-items: center;
+            overflow-y: auto;
+        }
+        .modal.active {
+            display: flex;
+        }
+        .modal-content {
+            background: var(--white);
+            max-width: 800px;
+            width: 90%;
+            max-height: 85vh;
+            overflow-y: auto;
+            border-radius: 24px;
+            padding: 40px;
+            position: relative;
+            margin: 40px auto;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+        }
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 24px;
+            font-size: 1.8rem;
+            cursor: pointer;
+            color: var(--text-light);
+            transition: var(--transition);
+            background: none;
+            border: none;
+            font-family: inherit;
+        }
+        .modal-close:hover {
+            color: var(--greek-blue);
+        }
+        .modal-content h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            color: var(--deep-blue);
+            margin-bottom: 24px;
+            border-bottom: 2px solid var(--greek-blue);
+            padding-bottom: 12px;
+        }
+        .modal-content h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            color: var(--deep-blue);
+            margin: 24px 0 12px 0;
+        }
+        .modal-content p {
+            font-family: 'Inter', sans-serif;
+            color: var(--text-dark);
+            line-height: 1.6;
+            margin-bottom: 16px;
+        }
+        .modal-content ul, .modal-content ol {
+            margin-left: 24px;
+            margin-bottom: 16px;
+            font-family: 'Inter', sans-serif;
+        }
+        .modal-content li {
+            margin-bottom: 8px;
+            line-height: 1.5;
+        }
         .button-group { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 16px; }
-        .destinations-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 32px; margin-top: 32px; }
-        .destination-card { background: white; border-radius: 20px; padding: 32px; text-align: center; box-shadow: var(--shadow); }
-        .amenities-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 24px; text-align: center; }
-        .amenity { padding: 24px; background: white; border-radius: 16px; box-shadow: var(--shadow); }
+        .destinations-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 32px; margin-top: 32px; max-width: 800px; margin-left: auto; margin-right: auto; }
+        .destination-card { background: white; border-radius: 20px; padding: 32px; text-align: center; box-shadow: var(--shadow); transition: var(--transition); cursor: pointer; }
+        .destination-card:hover { transform: translateY(-5px); background: var(--off-white); }
+        .destination-card i { font-size: 2.5rem; color: var(--greek-blue); margin-bottom: 16px; }
+        .destination-card h3 { font-size: 1.3rem; margin-bottom: 8px; color: var(--deep-blue); }
+        .destination-card p { color: var(--text-light); margin-top: 12px; }
+        .amenities-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 24px; text-align: center; }
+        .amenity { padding: 24px; background: white; border-radius: 16px; box-shadow: var(--shadow); transition: var(--transition); }
+        .amenity:hover { transform: translateY(-5px); }
         .amenity i { font-size: 2rem; color: var(--greek-blue); margin-bottom: 12px; }
-        .testimonials-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 32px; }
+        .amenity h4 { font-size: 1rem; margin-bottom: 4px; color: var(--deep-blue); }
+        .amenity p { font-size: 0.85rem; color: var(--text-light); }
+        .testimonials-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 32px; }
         .testimonial-card { background: white; padding: 32px; border-radius: 20px; box-shadow: var(--shadow); position: relative; }
         .testimonial-card i { font-size: 2rem; color: var(--greek-blue); opacity: 0.3; position: absolute; top: 20px; left: 20px; }
-        .testimonial-card p { font-style: italic; margin-bottom: 20px; padding-top: 20px; position: relative; z-index: 1; }
+        .testimonial-card p { font-style: italic; margin-bottom: 20px; padding-top: 20px; position: relative; z-index: 1; line-height: 1.6; }
+        .testimonial-author { font-weight: 600; color: var(--deep-blue); margin-top: 10px; }
+        .testimonial-date { font-size: 0.8rem; color: var(--text-light); margin-top: 4px; }
         .contact { background: var(--off-white); }
         .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; }
+        .contact-info h2 { font-size: 2rem; margin: 12px 0 20px; color: var(--deep-blue); }
         .contact-details { margin: 32px 0; }
-        .contact-item { display: flex; gap: 16px; margin-bottom: 24px; }
-        .contact-item i { font-size: 1.3rem; color: var(--greek-blue); margin-top: 4px; }
+        .contact-item { display: flex; gap: 16px; margin-bottom: 24px; align-items: flex-start; }
+        .contact-item i { font-size: 1.3rem; color: var(--greek-blue); margin-top: 4px; min-width: 28px; }
+        .contact-item strong { display: block; margin-bottom: 4px; font-weight: 600; }
+        .contact-item a, .contact-item span { color: var(--text-light); text-decoration: none; line-height: 1.5; }
+        .contact-item a:hover { color: var(--greek-blue); }
+        .working-hours { margin-top: 24px; padding-top: 24px; border-top: 1px solid #e0e0e0; }
         .contact-form { background: white; padding: 32px; border-radius: 20px; box-shadow: var(--shadow); }
         .form-group { margin-bottom: 20px; }
         .form-group input, .form-group select, .form-group textarea { width: 100%; padding: 12px 16px; border: 1px solid #e0e0e0; border-radius: 12px; font-family: inherit; font-size: 1rem; }
@@ -99,83 +235,279 @@
         .cta { background: linear-gradient(135deg, var(--deep-blue), var(--sea-blue)); color: white; text-align: center; padding: 60px 0; }
         .footer { background: var(--deep-blue); color: white; padding: 48px 0 24px; }
         .footer-content { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 48px; margin-bottom: 48px; }
-        .footer-bottom { text-align: center; padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.1); }
+        .footer-links h4, .footer-legal h4 { margin-bottom: 20px; font-family: 'Playfair Display', serif; font-size: 1.1rem; }
+        .footer-links ul, .footer-legal ul { list-style: none; }
+        .footer-links li, .footer-legal li { margin-bottom: 12px; }
+        .footer-links a, .footer-legal a { color: rgba(255,255,255,0.8); text-decoration: none; transition: var(--transition); cursor: pointer; }
+        .footer-links a:hover, .footer-legal a:hover { color: white; }
+        .footer-bottom { text-align: center; padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.1); font-size: 0.9rem; }
         .toast { position: fixed; bottom: 30px; right: 30px; background: var(--deep-blue); color: white; padding: 16px 24px; border-radius: 12px; z-index: 1000; animation: slideIn 0.3s ease; }
         @keyframes slideIn { from { transform: translateX(100%); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
         @media (max-width: 768px) {
             .nav-links { display: none; }
             .mobile-menu-btn { display: block; }
             .hero-title { font-size: 2rem; }
+            .hero { min-height: 500px; background-position: center 40%; }
             .properties-grid, .contact-grid { grid-template-columns: 1fr; }
             .gallery-grid { grid-template-columns: repeat(3, 1fr); }
+            .amenities-grid { grid-template-columns: repeat(2, 1fr); }
+            .testimonials-grid { grid-template-columns: 1fr; }
+            .destinations-grid { grid-template-columns: 1fr; gap: 20px; }
+            .modal-content { padding: 24px; width: 95%; }
+            .modal-content h2 { font-size: 1.4rem; }
             .nav-links.active { display: flex; flex-direction: column; position: absolute; top: 70px; left: 0; right: 0; background: white; padding: 24px; gap: 16px; box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
         }
     </style>
 </head>
 <body>
-    <nav class="navbar"><div class="container"><a href="/" class="logo"><i class="fas fa-water"></i><span>Grčki Raj</span></a><ul class="nav-links"><li><a href="#home">Početna</a></li><li><a href="#properties">Studiji</a></li><li><a href="#apartments">Apartmani</a></li><li><a href="#destinations">Destinacije</a></li><li><a href="#contact">Kontakt</a></li></ul><button class="mobile-menu-btn"><i class="fas fa-bars"></i></button></div></nav>
+    <nav class="navbar"><div class="container"><a href="/" class="logo"><i class="fas fa-water"></i><span>Smeštaj Grčki Raj</span></a><ul class="nav-links"><li><a href="#home">Početna</a></li><li><a href="#properties">Studiji</a></li><li><a href="#apartments">Apartmani</a></li><li><a href="#destinations">Destinacije</a></li><li><a href="#contact">Kontakt</a></li></ul><button class="mobile-menu-btn"><i class="fas fa-bars"></i></button></div></nav>
 
-    <section id="home" class="hero"><div class="hero-overlay"></div><div class="hero-content"><h1 class="hero-title">Otkrijte Raj na Grčkoj Obali</h1><p class="hero-subtitle">Studio Olymp, Studio Areti i luksuzni apartmani sa pogledom na kristalno čisto more.</p><a href="#properties" class="btn-primary">Pogledaj Smestaj <i class="fas fa-arrow-right"></i></a></div></section>
+    <section id="home" class="hero">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1 class="hero-title">Smeštaj Grčki Raj</h1>
+            <p class="hero-subtitle">Luksuzni apartmani Epivates-Perea na more, Studio Olymp i Areti blizu plaže u Olympic Beach</p>
+            <a href="#properties" class="btn-primary">Pogledaj Smestaj <i class="fas fa-arrow-right"></i></a>
+        </div>
+        <div class="hero-wave">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 120">
+                <path fill="white" fill-opacity="1" d="M0,64L80,69.3C160,75,320,85,480,80C640,75,800,53,960,48C1120,43,1280,53,1360,58.7L1440,64L1440,120L1360,120C1280,120,1120,120,960,120C800,120,640,120,480,120C320,120,160,120,80,120L0,120Z"></path>
+            </svg>
+        </div>
+    </section>
 
-    <section id="properties" class="properties"><div class="container"><div class="section-header"><span class="section-tag">Naši Studiji</span><h2>Studio Olymp i Studio Areti</h2><p>Udobni studiji u prvoj ulici do šetališta, na samo 90m od plaže</p></div><div class="properties-grid" id="studios-grid"></div></div></section>
+    <section id="properties" class="properties"><div class="container"><div class="section-header"><span class="section-tag">Naši Studiji</span><h2>Studio Olymp i Studio Areti</h2><p>Udobni studiji u prvoj ulici do šetališta, na samo 90m od plaže Olympic Beach</p></div><div class="properties-grid" id="studios-grid"></div></div></section>
 
-    <section id="apartments" class="properties alt-bg"><div class="container"><div class="section-header"><span class="section-tag">Naši Apartmani</span><h2>Apartmani u Halkidikiju</h2><p>Prostrani apartmani sa terasom, idealni za porodični odmor</p></div><div class="properties-grid" id="apartments-grid"></div></div></section>
+    <section id="apartments" class="properties alt-bg"><div class="container"><div class="section-header"><span class="section-tag">Naši Apartmani</span><h2>Apartmani Perea - Epivates</h2><p>Luksuzni apartmani sa pogledom na more, terasom i direktnim pristupom plaži</p></div><div class="properties-grid" id="apartments-grid"></div></div></section>
 
-    <section id="destinations" class="properties"><div class="container"><div class="section-header"><span class="section-tag">Istražite</span><h2>Popularne Destinacije</h2></div><div class="destinations-grid"><div class="destination-card"><i class="fas fa-umbrella-beach"></i><h3>Olympic Beach</h3><p>Olimpska regija</p><p>2 studija na 90-100m od plaže</p></div><div class="destination-card"><i class="fas fa-water"></i><h3>Paralia - Epivates</h3><p>Halkidiki</p><p>2 apartmana sa terasom</p></div></div></div></section>
+    <section id="destinations" class="properties"><div class="container"><div class="section-header"><span class="section-tag">Istražite</span><h2>Popularne Destinacije</h2></div><div class="destinations-grid">
+        <div class="destination-card" onclick="document.getElementById('properties').scrollIntoView({ behavior: 'smooth' });">
+            <i class="fas fa-umbrella-beach"></i>
+            <h3>Olympic Beach</h3>
+            <p>Olimpska regija</p>
+            <p>2 studija na 90-100m od plaže</p>
+        </div>
+        <div class="destination-card" onclick="document.getElementById('apartments').scrollIntoView({ behavior: 'smooth' });">
+            <i class="fas fa-water"></i>
+            <h3>Perea - Epivates</h3>
+            <p>Halkidiki</p>
+            <p>2 luksuzna apartmana sa pogledom na more, terasom na samoj plaži</p>
+        </div>
+    </div></div></section>
 
-    <section class="properties alt-bg"><div class="container"><div class="section-header"><span class="section-tag">Sadržaji</span><h2>Sve što Vam je Potrebno</h2></div><div class="amenities-grid"><div class="amenity"><i class="fas fa-wifi"></i><h4>Wi-Fi</h4><p>Brz internet</p></div><div class="amenity"><i class="fas fa-car"></i><h4>Parking</h4><p>Besplatan parking</p></div><div class="amenity"><i class="fas fa-utensils"></i><h4>Kuhinja</h4><p>Potpuno opremljena</p></div><div class="amenity"><i class="fas fa-snowplow"></i><h4>Klima</h4><p>Klima uređaj</p></div><div class="amenity"><i class="fas fa-tv"></i><h4>Smart TV</h4><p>Smart TV</p></div><div class="amenity"><i class="fas fa-door-open"></i><h4>Smart Lock</h4><p>Self check-in</p></div></div></div></section>
+    <section class="properties alt-bg">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Sadržaji</span>
+                <h2>Sve što Vam je Potrebno</h2>
+                <p>Savršena lokacija i kompletan komfor za nezaboravan odmor</p>
+            </div>
+            <div class="amenities-grid">
+                <div class="amenity"><i class="fas fa-umbrella-beach"></i><h4>Prvi red do mora</h4><p>Na samo 90m od plaže, prva ulica do šetališta</p></div>
+                <div class="amenity"><i class="fas fa-water"></i><h4>Pogled na more</h4><p>Bočni pogled na kristalno čisto more</p></div>
+                <div class="amenity"><i class="fas fa-shower"></i><h4>Tuš za noge</h4><p>Ispred zgrade za osveženje nakon plaže</p></div>
+                <div class="amenity"><i class="fas fa-wifi"></i><h4>Wi-Fi</h4><p>Brz optički internet</p></div>
+                <div class="amenity"><i class="fas fa-car"></i><h4>Parking</h4><p>Besplatan parking ispred zgrade</p></div>
+                <div class="amenity"><i class="fas fa-utensils"></i><h4>Frižider</h4><p>Potpuno opremljena kuhinja sa frižiderom</p></div>
+                <div class="amenity"><i class="fas fa-bed"></i><h4>Posteljina</h4><p>Sveža posteljina i peškiri</p></div>
+                <div class="amenity"><i class="fas fa-snowplow"></i><h4>Klima uređaj</h4><p>Klimatizacija za savršenu temperaturu</p></div>
+                <div class="amenity"><i class="fas fa-tv"></i><h4>Smart TV</h4><p>Smart TV sa kablovskom</p></div>
+                <div class="amenity"><i class="fas fa-door-open"></i><h4>Smart Lock</h4><p>Self check-in 24/7</p></div>
+            </div>
+        </div>
+    </section>
 
-    <section id="testimonials" class="properties"><div class="container"><div class="section-header"><span class="section-tag">Iskustva</span><h2>Šta Kažu Naši Gosti</h2></div><div class="testimonials-grid" id="testimonials-grid"></div></div></section>
+    <section id="testimonials" class="properties"><div class="container"><div class="section-header"><span class="section-tag">Iskustva</span><h2>Šta Kažu Naši Gosti</h2><p>Autentične utiske naših gostiju koji su uživali u smeštaju Grčki Raj</p></div><div class="testimonials-grid" id="testimonials-grid"></div></div></section>
 
-    <section class="cta"><div class="container"><h2>Spremni za Vaš Odmor?</h2><p>Rezervišite Studio Olymp, Studio Areti ili apartman danas</p><a href="#contact" class="btn-primary">Rezervišite Odmah <i class="fas fa-calendar-check"></i></a></div></section>
+    <section class="cta"><div class="container"><h2>Spremni za Vaš Odmor?</h2><p>Rezervišite Studio Olymp, Studio Areti ili luksuzne apartmane u Peri-Epivates danas</p><a href="#contact" class="btn-primary">Rezervišite Odmah <i class="fas fa-calendar-check"></i></a></div></section>
 
-    <section id="contact" class="contact"><div class="container"><div class="contact-grid"><div class="contact-info"><span class="section-tag">Kontakt</span><h2>Tu smo da odgovorimo</h2><div class="contact-details"><div class="contact-item"><i class="fas fa-envelope"></i><div><strong>Email</strong><a href="mailto:apartmanada@gmail.com">apartmanada@gmail.com</a></div></div><div class="contact-item"><i class="fas fa-phone"></i><div><strong>Telefon / WhatsApp / Viber</strong><a href="tel:+381648776060">+381 64 877 6060</a></div></div><div class="contact-item"><i class="fas fa-map-marker-alt"></i><div><strong>Lokacije</strong><span>Olympic Beach, Olimpska regija<br>Paralia - Epivates, Halkidiki</span></div></div><div class="working-hours"><i class="fas fa-clock"></i><div><strong>Radno vreme</strong><span>Ponedeljak - Nedelja: 08:00 - 20:00</span></div></div></div><div class="button-group"><a href="mailto:apartmanada@gmail.com" class="btn-email"><i class="fas fa-envelope"></i> Pošalji Email</a><a href="https://wa.me/381648776060" class="btn-whatsapp" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a></div></div><form class="contact-form" id="contact-form" action="https://formsubmit.co/apartmanada@gmail.com" method="POST"><input type="hidden" name="_subject" value="Novi upit - Grčki Raj"><input type="hidden" name="_captcha" value="false"><div class="form-group"><input type="text" name="Ime" placeholder="Vaše Ime i Prezime" required></div><div class="form-group"><input type="email" name="Email" placeholder="Email Adresa" required></div><div class="form-group"><input type="tel" name="Telefon" placeholder="Broj Telefona"></div><div class="form-row"><div class="form-group"><input type="date" name="Dolazak" placeholder="Dolazak"></div><div class="form-group"><input type="date" name="Odlazak" placeholder="Odlazak"></div></div><div class="form-group"><select name="Smestaj" required><option value="">Izaberite Smestaj</option><option value="Studio Olymp">Studio Olymp</option><option value="Studio Areti">Studio Areti</option><option value="Epivates 1">Epivates Apartment 1</option><option value="Epivates 2">Epivates Apartment 2</option></select></div><div class="form-group"><textarea name="Poruka" rows="4" placeholder="Vaša poruka..."></textarea></div><button type="submit" class="btn-primary">Pošalji Upit <i class="fas fa-paper-plane"></i></button></form></div></div></section>
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <span class="section-tag">Kontakt</span>
+                    <h2>Tu smo da odgovorimo</h2>
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <div><strong>Email</strong><a href="mailto:apartmanada@gmail.com">apartmanada@gmail.com</a></div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <div><strong>Telefon / WhatsApp / Viber</strong><a href="tel:+381648776060">+381 64 877 6060</a></div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div><strong>Lokacije</strong><span>Olympic Beach, Olimpska regija<br>Perea - Epivates, Halkidiki</span></div>
+                        </div>
+                        <div class="working-hours">
+                            <i class="fas fa-clock"></i>
+                            <div><strong>Radno vreme</strong><span>Ponedeljak - Nedelja, 08:00 - 22:00</span></div>
+                        </div>
+                    </div>
+                    <div class="button-group">
+                        <a href="mailto:apartmanada@gmail.com" class="btn-email"><i class="fas fa-envelope"></i> Pošalji Email</a>
+                        <a href="https://wa.me/381648776060" class="btn-whatsapp" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+                    </div>
+                </div>
+                <form class="contact-form" id="contact-form" action="https://formsubmit.co/apartmanada@gmail.com" method="POST">
+                    <input type="hidden" name="_subject" value="Novi upit - Smeštaj Grčki Raj">
+                    <input type="hidden" name="_captcha" value="false">
+                    <div class="form-group"><input type="text" name="Ime" placeholder="Vaše Ime i Prezime" required></div>
+                    <div class="form-group"><input type="email" name="Email" placeholder="Email Adresa" required></div>
+                    <div class="form-group"><input type="tel" name="Telefon" placeholder="Broj Telefona"></div>
+                    <div class="form-row">
+                        <div class="form-group"><input type="date" name="Dolazak" placeholder="Dolazak"></div>
+                        <div class="form-group"><input type="date" name="Odlazak" placeholder="Odlazak"></div>
+                    </div>
+                    <div class="form-group">
+                        <select name="Smestaj" required>
+                            <option value="">Izaberite Smestaj</option>
+                            <option value="Studio Olymp">Studio Olymp - Olympic Beach</option>
+                            <option value="Studio Areti">Studio Areti - Olympic Beach</option>
+                            <option value="Epivates 1">Luksuzni apartman Epivates 1 - Perea</option>
+                            <option value="Epivates 2">Luksuzni apartman Epivates 2 - Perea</option>
+                        </select>
+                    </div>
+                    <div class="form-group"><textarea name="Poruka" rows="4" placeholder="Vaša poruka..."></textarea></div>
+                    <button type="submit" class="btn-primary">Pošalji Upit <i class="fas fa-paper-plane"></i></button>
+                </form>
+            </div>
+        </div>
+    </section>
 
-    <footer class="footer"><div class="container"><div class="footer-content"><div class="footer-brand"><i class="fas fa-water"></i><h3>Grčki Raj</h3><p>Studio Olymp, Studio Areti i luksuzni apartmani uz more</p></div><div class="footer-links"><h4>Linkovi</h4><ul><li><a href="#home">Početna</a></li><li><a href="#properties">Studiji</a></li><li><a href="#contact">Kontakt</a></li></ul></div></div><div class="footer-bottom"><p>&copy; 2025 Grčki Raj. Sva prava zadržana.</p></div></div></footer>
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <i class="fas fa-water"></i>
+                    <h3>Smeštaj Grčki Raj</h3>
+                    <p>Luksuzni apartmani Epivates-Perea na more, Studio Olymp i Areti blizu plaže u Olympic Beach</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Linkovi</h4>
+                    <ul>
+                        <li><a href="#home">Početna</a></li>
+                        <li><a href="#properties">Studiji</a></li>
+                        <li><a href="#apartments">Apartmani</a></li>
+                        <li><a href="#destinations">Destinacije</a></li>
+                        <li><a href="#contact">Kontakt</a></li>
+                    </ul>
+                </div>
+                <div class="footer-legal">
+                    <h4>Informacije</h4>
+                    <ul>
+                        <li><a href="#">Politika privatnosti</a></li>
+                        <li><a href="#">Uslovi korišćenja</a></li>
+                        <li><a href="#" onclick="openCancellationModal(); return false;">Politika otkazivanja</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Smeštaj Grčki Raj. Sva prava zadržana. | apartmani Perea-Epivates | studija Olympic Beach</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Cancellation Policy Modal -->
+    <div id="cancellationModal" class="modal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeCancellationModal()">&times;</button>
+            <h2>POLITIKA OTKAZIVANJA REZERVACIJA<br>SMEŠTAJ GRČKI RAJ</h2>
+            <p>Ova politika otkazivanja definiše uslove rezervacije, plaćanja i otkazivanja boravka u objektu Smeštaj Grčki Raj u Grčkoj. Uplatom avansa i potvrdom rezervacije gost prihvata sve dole navedene uslove.</p>
+            
+            <h3>1. Potvrda rezervacije</h3>
+            <p>Da bi rezervacija u objektu Smeštaj Grčki Raj bila potvrđena, gost je obavezan da izvrši uplatu avansa u visini od 30% ukupne cene smeštaja za izabrani period.<br>
+            Avans se može uplatiti na sledeće načine:</p>
+            <ul>
+                <li>uplata na bankovni račun,</li>
+                <li>Western Union,</li>
+                <li>lična uplata uz izdavanje priznanice.</li>
+            </ul>
+            <p>Rezervacija je važeća tek kada Smeštaj Grčki Raj evidentira uplatu i gost primi pisanu potvrdu.</p>
+            
+            <h3>2. Preostali iznos</h3>
+            <p>Preostali iznos ukupne cene smeštaja gost je dužan da uplati:</p>
+            <ul>
+                <li>pre dolaska (pre check-ina), ili</li>
+                <li>na samom check-inu, prema prethodnom dogovoru sa objektom Smeštaj Grčki Raj.</li>
+            </ul>
+            
+            <h3>3. Politika otkazivanja</h3>
+            <h4>3.1. Otkazivanje 30 dana pre dolaska ili kasnije</h4>
+            <p>Ukoliko gost otkaže rezervaciju:<br>
+            - 30 dana pre datuma dolaska, ili<br>
+            - manje od 30 dana pre datuma dolaska,<br>
+            uplaćeni avans se ne vraća i zadržava ga objekat Smeštaj Grčki Raj.</p>
+            
+            <h4>3.2. Otkazivanje više od 30 dana pre dolaska</h4>
+            <p>Ako gost otkaže rezervaciju više od 30 dana pre dolaska, avans se vraća samo u slučaju objektivnog i opravdanog razloga nemogućnosti dolaska, uz obaveznu dostavu validne dokumentacije.<br>
+            Primeri opravdanih razloga:</p>
+            <ul>
+                <li>ozbiljno zdravstveno stanje gosta ili člana uže porodice (uz medicinsku dokumentaciju),</li>
+                <li>zvanične putne restrikcije ili problemi sa dokumentima,</li>
+                <li>vanredne okolnosti (uz relevantne dokaze).</li>
+            </ul>
+            <p>Ukoliko se dokumentacija ne dostavi, avans se zadržava.</p>
+            
+            <h3>4. Nenajavljen nedolazak (No Show)</h3>
+            <p>U slučaju da se gost ne pojavi na dan dolaska bez obaveštenja, rezervacija se smatra otkazanom, a avans se ne vraća.</p>
+            
+            <h3>5. Izmene rezervacije</h3>
+            <p>Sve izmene termina boravka biće prihvaćene u zavisnosti od raspoloživosti.<br>
+            Ako izmena dovede do toga da se rezervacija efektivno otkaže unutar 30 dana pred dolazak, primenjuju se standardna pravila otkazivanja iz tačke 3.</p>
+            
+            <h3>6. Prihvatanje politike</h3>
+            <p>Potvrdom rezervacije i uplatom avansa gost potvrđuje da je upoznat sa Politikom otkazivanja objekta Smeštaj Grčki Raj i da se sa njom u potpunosti slaže.</p>
+        </div>
+    </div>
 
     <div id="lightbox" class="lightbox" onclick="closeLightbox()"><span class="lightbox-close" onclick="closeLightbox()">&times;</span><img id="lightbox-img" src=""><div id="lightbox-caption" class="lightbox-caption"></div></div>
 
     <script>
         // ============================================
-        // STUDIO ARETI GALLERY - GOOGLE DRIVE DIRECT LINKS
-        // All FILE IDs are now complete!
+        // STUDIO OLYMP GALLERY - 16 FULL-SIZE PHOTOS
         // ============================================
-        
-        // Google Drive FILE IDs for all Studio Areti photos
-        const FILE_IDS = {
-            // Main exterior
-            main: "1PWKfkeqKxfKP1TcuIxLnKNtSKE0VFnBP",
-            // Terrace and views
-            terasa1: "1f__Q6bQNWqyxofxZTFgsttvouZIVaPVN",
-            terasa2: "1Q6tLK-tRYuw_HTNV1yc799ZIwBzj9Ws-",
-            terasaNoc: "16Btl1FuWinNWZplIZTC7crEv9JZYXnwR",
-            // Interior
-            kuhinja: "1JVKerS3yQkTgvLTwWGsEg1xAS8MVoeUE",
-            kupatilo: "1pDzZiucv4uHVVjZw1rkJqsL_dyyhne30",
-            vrata: "1cGXZ81I-NH_0m-Xxp8vkT5rlLY0f10CW",
-            // Furniture
-            fiokar: "1WvbTn1LXv2LcJx0tGLocHVBBnO1TGASA",
-            // Parking/location
-            parking: "1vLLicC7rRSIEaHdGEWQywxWSpK8cKtwj"
-        };
-        
-        // Helper function to create Google Drive direct link
-        function gdLink(fileId) {
-            return `https://drive.google.com/uc?export=view&id=${fileId}`;
-        }
-        
-        // Studio Areti Gallery with all 9 photos
-        const aretiGallery = {
-            main: gdLink(FILE_IDS.main),
+        const olympGallery = {
+            main: "https://i.ibb.co/2YMpnR0M/1.jpg",
             photos: [
-                { url: gdLink(FILE_IDS.terasa1), caption: "Terasa sa suncem 1" },
-                { url: gdLink(FILE_IDS.terasa2), caption: "Terasa sa suncem 2" },
-                { url: gdLink(FILE_IDS.terasaNoc), caption: "Noćni pogled sa terase" },
-                { url: gdLink(FILE_IDS.kuhinja), caption: "Kuhinja" },
-                { url: gdLink(FILE_IDS.kupatilo), caption: "Kupatilo" },
-                { url: gdLink(FILE_IDS.vrata), caption: "Ulaz u studio" },
-                { url: gdLink(FILE_IDS.fiokar), caption: "Fiokar" },
-                { url: gdLink(FILE_IDS.parking), caption: "Parking i plaža" }
+                { url: "https://i.ibb.co/2YMpnR0M/1.jpg", caption: "Studio Olymp - Unutrašnjost 1" },
+                { url: "https://i.ibb.co/S4CFym2T/1aa.jpg", caption: "Studio Olymp - Unutrašnjost 2" },
+                { url: "https://i.ibb.co/7x9kVTcg/3.jpg", caption: "Studio Olymp - Unutrašnjost 3" },
+                { url: "https://i.ibb.co/VcgT9JNr/5.jpg", caption: "Studio Olymp - Pogled 1" },
+                { url: "https://i.ibb.co/4nTnkXqZ/IMG-20250623-WA0002.jpg", caption: "Studio Olymp - Enterijer" },
+                { url: "https://i.ibb.co/sdHfhMHW/IMG-20250623-WA0003.jpg", caption: "Studio Olymp - Dnevni boravak" },
+                { url: "https://i.ibb.co/GQ8Bx0xY/IMG-20250623-WA0004.jpg", caption: "Studio Olymp - Kuhinja" },
+                { url: "https://i.ibb.co/N60LQghV/IMG-20250623-WA0005.jpg", caption: "Studio Olymp - Spavaći deo" },
+                { url: "https://i.ibb.co/xKtFWC2T/IMG-20250623-WA0008.jpg", caption: "Studio Olymp - Detalj" },
+                { url: "https://i.ibb.co/8Dcyp2pQ/kupatilo-lepa-slika.jpg", caption: "Studio Olymp - Kupatilo" },
+                { url: "https://i.ibb.co/jk0mp8gB/mesara-pored.jpg", caption: "Studio Olymp - Okolina: Mesara" },
+                { url: "https://i.ibb.co/Y4F33T70/pogled-more-direktno.jpg", caption: "Studio Olymp - Pogled na more" },
+                { url: "https://i.ibb.co/4whZL1mW/prodavnica-AHILEJ-kad-izadjes.jpg", caption: "Studio Olymp - Prodavnica Ahilej" },
+                { url: "https://i.ibb.co/qMFbwH9B/Studio-OLYMP-spolja-zgrada.jpg", caption: "Studio Olymp - Zgrada spolja" },
+                { url: "https://i.ibb.co/zW017yMv/terasa-sa-strane.jpg", caption: "Studio Olymp - Terasa sa strane" },
+                { url: "https://i.ibb.co/20GMV02N/veliki-parking-pogled-ka-iras-i-more.jpg", caption: "Studio Olymp - Parking i pogled" }
+            ]
+        };
+
+        // ============================================
+        // STUDIO ARETI GALLERY - ALL 12 FULL-SIZE PHOTOS
+        // ============================================
+        const aretiGallery = {
+            main: "https://i.ibb.co/8L9XWLxJ/a1.jpg",
+            photos: [
+                { url: "https://i.ibb.co/8L9XWLxJ/a1.jpg", caption: "Studio Areti - Pogled 1" },
+                { url: "https://i.ibb.co/VYJ4VVzG/a2.jpg", caption: "Studio Areti - Pogled 2" },
+                { url: "https://i.ibb.co/R4HZGLYF/a3.jpg", caption: "Studio Areti - Pogled 3" },
+                { url: "https://i.ibb.co/TMNRsLzD/a4.jpg", caption: "Studio Areti - Pogled 4" },
+                { url: "https://i.ibb.co/xKtCXxYp/a5.jpg", caption: "Studio Areti - Pogled 5" },
+                { url: "https://i.ibb.co/S4GD2fJZ/a6.jpg", caption: "Studio Areti - Pogled 6" },
+                { url: "https://i.ibb.co/5X77p0Ft/a7.jpg", caption: "Studio Areti - Pogled 7" },
+                { url: "https://i.ibb.co/JFsSpBPG/a8.jpg", caption: "Studio Areti - Pogled 8" },
+                { url: "https://i.ibb.co/LXcgtr3H/a9.jpg", caption: "Studio Areti - Pogled 9" },
+                { url: "https://i.ibb.co/1JBtv1SF/a10.jpg", caption: "Studio Areti - Pogled 10" },
+                { url: "https://i.ibb.co/SwRXMkhr/a11.jpg", caption: "Studio Areti - Pogled 11" },
+                { url: "https://i.ibb.co/1tj4mNBM/a12.jpg", caption: "Studio Areti - Pogled 12" }
             ]
         };
 
@@ -186,8 +518,8 @@
                 description: "Studio se nalazi u prvoj ulici do šetališta, na 90-100m od plaže, na 3. spratu. Raspolaže sa 2 velika bračna kreveta i odlično opremljenom kuhinjom.",
                 price: "€55-70",
                 features: ["4 osobe", "1 kupatilo", "3. sprat", "AC klima", "Optički internet", "Smart lock"],
-                mainImage: "https://images.pexels.com/photos/271618/pexels-photo-271618.jpeg?auto=compress&cs=tinysrgb&w=600",
-                gallery: null,
+                mainImage: olympGallery.main,
+                gallery: olympGallery.photos,
                 badge: "Bočni pogled na more"
             },
             {
@@ -203,15 +535,30 @@
         ];
 
         const apartments = [
-            { name: "Epivates Apartment 1", location: "Paralia - Epivates, Halkidiki", description: "Apartman od 36m² sa terasom. Veća spavaća soba sa bračnim krevetom i mogućnošću postave dečijeg kreveta. Velika opremljena kuhinja i mala terasa sa pogledom na crkvu.", price: "€75-110", features: ["3 osobe", "1 kupatilo", "2. sprat", "36m² + terasa", "Wi-Fi", "Besplatan parking"], mainImage: "https://images.pexels.com/photos/2648652/pexels-photo-2648652.jpeg?auto=compress&cs=tinysrgb&w=600", gallery: null, badge: "Pogled na crkvu" },
-            { name: "Epivates Apartment 2", location: "Paralia - Epivates, Halkidiki", description: "Apartman od 38m² sa velikom terasom od 10m². Veći dnevni boravak sa troseom i trpezarijskim stolom, manja spavaća soba sa bračnim krevetom, veće kupatilo.", price: "€75-115", features: ["4 osobe", "1 kupatilo", "1. sprat", "38m² + terasa 10m²", "Wi-Fi", "Besplatan parking"], mainImage: "https://images.pexels.com/photos/271624/pexels-photo-271624.jpeg?auto=compress&cs=tinysrgb&w=600", gallery: null, badge: "Velika terasa - pogled na more" }
+            { name: "Epivates Apartment 1", location: "Perea - Epivates, Halkidiki", description: "Luksuzni apartman od 36m² sa terasom. Veća spavaća soba sa bračnim krevetom i mogućnošću postave dečijeg kreveta. Velika opremljena kuhinja i mala terasa sa pogledom na more.", price: "€75-110", features: ["3 osobe", "1 kupatilo", "2. sprat", "36m² + terasa", "Wi-Fi", "Besplatan parking"], mainImage: "https://images.pexels.com/photos/2648652/pexels-photo-2648652.jpeg?auto=compress&cs=tinysrgb&w=600", gallery: null, badge: "Pogled na more" },
+            { name: "Epivates Apartment 2", location: "Perea - Epivates, Halkidiki", description: "Luksuzni apartman od 38m² sa velikom terasom od 10m². Veći dnevni boravak sa troseom i trpezarijskim stolom, manja spavaća soba sa bračnim krevetom, veće kupatilo. Pogled na more.", price: "€75-115", features: ["4 osobe", "1 kupatilo", "1. sprat", "38m² + terasa 10m²", "Wi-Fi", "Besplatan parking"], mainImage: "https://images.pexels.com/photos/271624/pexels-photo-271624.jpeg?auto=compress&cs=tinysrgb&w=600", gallery: null, badge: "Pogled na more - velika terasa" }
         ];
 
+        // Authentic guest reviews
         const testimonials = [
-            { text: "Studio Olymp je prelep! Pogled je neverovatan, sve je bilo savršeno čisto i uređeno. Definitivno se vraćamo sledeće godine.", author: "Marija P." },
-            { text: "Lokacija Studija Areti je fantastična, sve je blizu - plaža, restorani, prodavnice. Vlasnici su veoma ljubazni.", author: "Aleksandar M." },
-            { text: "Najbolji odmor u Grčkoj do sada! Apartman je bio moderno opremljen, a pogled na more je bio magičan.", author: "Jovana K." }
+            { text: "Studio Areti je bio savršen! Čisto, moderno opremljeno, a gazde su divne. Plaža je na 2 minuta hoda, a parking ispred zgrade. Sve pohvale! Definitivno se vraćamo.", author: "Nikola S.", date: "Avgust 2024" },
+            { text: "Apartman u Peri-Epivates je prelep! Pogled sa terase na more je nestvaran. Sve je bilo čisto, kuhinja odlično opremljena. Domaćini su mislili na svaki detalj. Preporučujem svima!", author: "Jelena M.", date: "Septembar 2024" },
+            { text: "Odlična lokacija, prvi red do mora. Studio Olymp ima sve što je potrebno za udoban boravak. Blizu su prodavnice i restorani. Vlasnici su veoma ljubazni i dostupni.", author: "Marko P.", date: "Jul 2024" },
+            { text: "Studio Olymp je prostran i svetao. Pogled sa terase je predivan. Sve pohvale za čistoću i opremljenost. Blizina prodavnice Ahilej je veliki plus.", author: "Ana K.", date: "Jun 2024" },
+            { text: "Studio Areti je čist, uredan i ima odličnu lokaciju. Sve je blizu - plaža, market, autobuska stanica. Smart lock omogućava fleksibilan check-in. Odličan odnos cene i kvaliteta.", author: "Stefan R.", date: "Avgust 2024" },
+            { text: "Najbolji odmor u Grčkoj do sada! Apartman u Peri-Epivates je prostran, terasa je velika, pogled na more oduzima dah. Vlasnici su izuzetno ljubazni i dostupni za sve što vam treba.", author: "Milica D.", date: "Septembar 2024" }
         ];
+
+        // Modal functions
+        function openCancellationModal() {
+            document.getElementById('cancellationModal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function closeCancellationModal() {
+            document.getElementById('cancellationModal').classList.remove('active');
+            document.body.style.overflow = '';
+        }
 
         window.openLightbox = function(imgUrl, caption) {
             document.getElementById('lightbox-img').src = imgUrl;
@@ -235,7 +582,16 @@
 
         function renderStudios() { document.getElementById('studios-grid').innerHTML = studios.map(renderPropertyCard).join(''); }
         function renderApartments() { document.getElementById('apartments-grid').innerHTML = apartments.map(renderPropertyCard).join(''); }
-        function renderTestimonials() { document.getElementById('testimonials-grid').innerHTML = testimonials.map(t => `<div class="testimonial-card"><i class="fas fa-quote-left"></i><p>${t.text}</p><div class="testimonial-author">${t.author}</div></div>`).join(''); }
+        function renderTestimonials() { 
+            document.getElementById('testimonials-grid').innerHTML = testimonials.map(t => `
+                <div class="testimonial-card">
+                    <i class="fas fa-quote-left"></i>
+                    <p>${t.text}</p>
+                    <div class="testimonial-author">${t.author}</div>
+                    <div class="testimonial-date">${t.date}</div>
+                </div>
+            `).join(''); 
+        }
         
         function prefillForm(propertyName) {
             const select = document.querySelector('select[name="Smestaj"]');
@@ -252,7 +608,15 @@
         function initFormHandler() { const form = document.getElementById('contact-form'); if (form) { form.addEventListener('submit', (e) => { const btn = form.querySelector('button[type="submit"]'); btn.innerHTML = 'Slanje... <i class="fas fa-spinner fa-pulse"></i>'; setTimeout(() => { btn.innerHTML = 'Pošalji Upit <i class="fas fa-paper-plane"></i>'; showToast('Upit je poslat! Odgovorićemo u najkraćem roku.'); }, 1500); }); } }
         function showToast(message) { const toast = document.createElement('div'); toast.className = 'toast'; toast.innerHTML = `<i class="fas fa-check-circle" style="margin-right: 10px;"></i>${message}`; document.body.appendChild(toast); setTimeout(() => toast.remove(), 3000); }
         
-        document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeLightbox(); });
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            const modal = document.getElementById('cancellationModal');
+            if (event.target === modal) {
+                closeCancellationModal();
+            }
+        }
+        
+        document.addEventListener('keydown', (e) => { if (e.key === 'Escape') { closeLightbox(); closeCancellationModal(); } });
         document.addEventListener('DOMContentLoaded', () => { renderStudios(); renderApartments(); renderTestimonials(); initMobileMenu(); initSmoothScroll(); initFormHandler(); });
     </script>
 </body>
